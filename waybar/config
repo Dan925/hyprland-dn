@@ -3,10 +3,10 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "modules-left": ["tray","hyprland/workspaces"],
     "modules-center": ["clock", "hyprland/window"],
-    "modules-right": ["pulseaudio", "bluetooth", "network", "battery"],
+    "modules-right": ["custom/pacman", "pulseaudio", "bluetooth", "network", "battery"],
     "clock": {
         "timezone": "America/Toronto",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B %d}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
     "battery": {
@@ -37,9 +37,9 @@
         "format-muted": " {format_source}",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "headphone": "  ",
+            "hands-free": "  ",
+            "headset": "  ",
             "phone": "",
             "portable": "",
             "car": "",
@@ -63,6 +63,13 @@
         "v": "  ",
     },
     "separate-outputs": true
+    },
+
+    "custom/pacman": {
+        "format": "{} ",
+        "interval": 3600,                     // every hour
+        "exec": "checkupdates | wc -l",       // # of updates requires pacman-contrib smth
+        "on-click": "notify-send 'Consider updating your system'", // update system
     }
 
 }
